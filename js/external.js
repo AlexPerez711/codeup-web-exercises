@@ -22,8 +22,10 @@ let sched = prompt("Would you like to sign up for the class?")
 let full = (sched && course)
 alert("Sorry but the class is currently " + full + ".")
 
-const items = Number(prompt("How many items did you buy?"))
-const Offer = Number(confirm("Has the offer expired?"))
-if(Offer=== true && items > 2) {
-    alert("Offer can be applied")
-}
+let quanity = number(prompt("How many items do you have?"));
+let eItems = quanity => 2;
+let noexpired = confirm("Click ok if offer did not expire.");
+let prem = confirm("Click if you're a Premium Member");
+
+let offervalid = (eItems && noexpired) || prem;
+alert("Valid discount: " + offervalid);

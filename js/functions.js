@@ -10,7 +10,6 @@
  */
 function sayHello(name) {
     return "Hello " + name;
-
 }
 /**
  * TODO:
@@ -100,4 +99,4 @@ function applyDiscount(price,discountpercent){
     let discount = price * discountpercent;
     return price - discount;
 }
-console.log(applyDiscount(45.99,0.12));
+console.log(applyDiscount(45.99,0.12).toFixed(2));

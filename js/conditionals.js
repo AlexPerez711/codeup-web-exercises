@@ -154,7 +154,7 @@ if(isNaN(uInput)){
     alert("invalid entry.");
 }else if(uInput %2 === 0 && !isNaN(uInput)){
     alert("The Number is even.");
-    alert((uInput) + 100);;
+    alert((uInput) + 100);
     if(uInput>0){
         alert("Number is positive.");
     }else{
@@ -166,7 +166,7 @@ else if (uInput %2 !== 0 && !isNaN(uInput)) {
     alert((uInput) + 100);
     if (uInput > 0) {
         alert("Number is positive.");
-    } else {
+    }else{
         alert("Number is negative.");
     }
 }

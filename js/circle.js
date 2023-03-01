@@ -21,7 +21,7 @@
             if(doRounding){
                 console.log("Area of a circle with radius: " + this.radius + ", is: " + Math.round(circle.getArea()));
             } else {
-                console.log("Area of a circle with radius: " + this.radius + ", is: " + circle.getArea());
+                console.log("Area of a circle with radius: " + this.radius + ", is: " + this.getArea());
             }
 
         }

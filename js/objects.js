@@ -58,9 +58,9 @@
         let discountAmount = (shopper.amount * 0.12).toFixed(2);
         let discountTotal = (shopper.amount - discountAmount).toFixed(2);
         if (shopper.amount > 200) {
-            console.log(`Hi ${shoppers.name}}, your previous total was $${shopper.amount}, but you have a discount of $${discountAmount} to bring you to the grand total of ${discountTotal}`)
+            console.log(`Hi ${shoppers.name}, your previous total was ${shopper.amount}, but you have a discount of ${discountAmount} to bring you to the grand total of ${discountTotal}`)
         } else {
-            console.log(`Hi ${shopper.name}, your total is $${shopper.amount}`);
+            console.log(`Hi ${shopper.name}, your total is ${shopper.amount}`);
         }
     })
 
@@ -148,7 +148,7 @@
         console.log("Book # " + i + 1);
         console.log("Title: " + books[i].title);
         console.log("Author: " + books[i].author.firstName + " " + books[i].author.lastName);
-        console.log("")
+        console.log("---")
     }
 
     /**
@@ -161,5 +161,23 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+
+    function createBook(title, firstName, lastName){
+        let book = {
+            title,
+            author:{
+                firstName: firstName,
+                lastName: lastName
+            }
+        }
+        return book;
+    }
+
+    let bookArr = [];
+    for(let i = 0; i < books.length; i++){
+        bookArr.push(createBook(books[i]))
+    }
+    console.log(bookArr);
+
 
 })();

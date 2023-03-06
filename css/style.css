@@ -1,3 +1,54 @@
-.fancy-header{
-    color: purple;
+header{
+    text-align: center
 }
+
+h1, h2, h3{
+    color: skyblue;
+    text-decoration: underline;
+}
+body{
+    background-image: url("../images/wallpaper-gif-4.gif");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: antiquewhite;
+    font-family: VT323;
+    font-size: 24px;
+    color: gold;
+    text-align: center;
+}
+
+#align{
+    display: inline-block;
+    text-align: left;
+    padding: 10px;
+}
+
+ul {
+    list-style-image: url("../images/pkmn.png");
+}
+
+ol {
+    list-style-image: url("../images/pkball.png");
+
+}
+
+table, th, td {
+    border: 1px solid;
+    border-color: deeppink;
+}
+
+a:link{
+    color: hotpink;
+}
+a:visited{
+    color: indianred;
+}
+a:hover{
+    color: paleturquoise;
+}
+a:active{
+    color: white;
+}
+hr {
+border-color: burlywood}

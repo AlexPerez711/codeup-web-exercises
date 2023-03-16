@@ -1,0 +1,33 @@
+#cody{
+    text-align: center;
+    font-weight: bolder;
+}
+
+#title{
+    text-align: center;
+}
+
+#aboutme{
+    text-align: center;
+}
+
+hr{
+    border: 3px solid darkgreen;
+}
+
+#contact{
+    text-align: center;
+}
+
+h4{
+    color: #4f82fb;
+    font-weight: bold;
+    text-align: left;
+}
+
+ul{
+text-align: left}
+
+p{
+    text-align: left;
+}

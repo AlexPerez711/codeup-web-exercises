@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Intro to jquery exercise</title>
+</head>
+<body>
+<h1 id="my-heading" class="header">I LIKE TURTLES</h1>
+<p id="my-paragraph" class="content">turtles are cool.</p>
+<ul id="my-list" class="content">
+    <li class="item">sea turtle</li>
+    <li class="item">snapping turtle</li>
+    <li class="item">thalassochelydia</li>
+</ul>
+<div id="my-div" class="codeup">This is a div about turtles.</div>
+<div id="remove-codeup">This element will have the class removed like we should remove plastic from the ocean cause turtles.</div>
+<div id="add-codeup">This element will have the class added... like how we should add plastic in the recycling bins cause turtles.</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+<script>
+    $(function () {
+        alert('The DOM has finished loading!');
+    });
+    $(document).ready(function () {
+        // select the element with the id "my-heading" and alert its contents
+        let headingContent = $("#my-heading").text();
+        alert(headingContent);
+
+        // select a different element with the id "my-paragraph" and alert its contents
+        let paragraphContent = $("#my-paragraph").text();
+        alert(paragraphContent);
+    });
+
+    $(document).ready(function() {
+        // add a red 1-pixel border to all elements with the class "codeup"
+        $(".codeup").css("border", "1px solid red");
+
+        // remove the "codeup" class from one of the elements
+        $("#remove-codeup").removeClass("codeup");
+    });
+
+    $(document).ready(function() {
+        // set the font-size of all li elements to 20px
+        $("li").css("font-size", "20px");
+
+        // highlight all h1, p, and li elements
+        $("h1, p, li").css("background-color", "yellow");
+
+        // alert the contents of all h1 elements
+        $("h1").each(function() {
+            alert($(this).text());
+        });
+    });
+
+    $(document).ready(function() {
+        // set the font-size of all li elements to 20px
+        $("li").css("font-size", "20px");
+
+        // highlight all h1, p, and li elements with a yellow background
+        $("h1, p, li").css("background-color", "yellow");
+
+        // alert the contents of all h1 elements
+        $("h1").each(function() {
+            alert($(this).text());
+        });
+    });
+</script>
+</body>
+</html>

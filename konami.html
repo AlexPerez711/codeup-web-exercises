@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Konami Code</title>
+</head>
+<body>
+<h1>Konami Code</h1>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    let konamiCode = "38384040373937396665"; // Konami Code sequence
+    let input = ""; // User input sequence
+
+    $(document).keydown(function(event) {
+      input += event.keyCode; // Add pressed key to user input sequence
+      if (input === konamiCode) {
+        // Konami Code entered successfully, do something
+        alert("You have added 30 lives!");
+        input = ""; // Reset user input sequence
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

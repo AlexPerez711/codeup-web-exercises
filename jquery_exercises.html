@@ -22,52 +22,69 @@
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
         crossorigin="anonymous"></script>
 <script>
-    $(function () {
-        alert('The DOM has finished loading!');
+    // $(function () {
+    //     alert('The DOM has finished loading!');
+    // });
+    // $(document).ready(function () {
+    //     // select the element with the id "my-heading" and alert its contents
+    //     let headingContent = $("#my-heading").text();
+    //     alert(headingContent);
+    //
+    //     // select a different element with the id "my-paragraph" and alert its contents
+    //     let paragraphContent = $("#my-paragraph").text();
+    //     alert(paragraphContent);
+    // });
+    //
+    // $(document).ready(function() {
+    //     // add a red 1-pixel border to all elements with the class "codeup"
+    //     $(".codeup").css("border", "1px solid red");
+    //
+    //     // remove the "codeup" class from one of the elements
+    //     $("#remove-codeup").removeClass("codeup");
+    // });
+    //
+    // $(document).ready(function() {
+    //     // set the font-size of all li elements to 20px
+    //     $("li").css("font-size", "20px");
+    //
+    //     // highlight all h1, p, and li elements
+    //     $("h1, p, li").css("background-color", "yellow");
+    //
+    //     // alert the contents of all h1 elements
+    //     $("h1").each(function() {
+    //         alert($(this).text());
+    //     });
+    // });
+    //
+    // $(document).ready(function() {
+    //     // set the font-size of all li elements to 20px
+    //     $("li").css("font-size", "20px");
+    //
+    //     // highlight all h1, p, and li elements with a yellow background
+    //     $("h1, p, li").css("background-color", "yellow");
+    //
+    //     // alert the contents of all h1 elements
+    //     $("h1").each(function() {
+    //         alert($(this).text());
+    //     });
+    // });
+// change header color
+    $('#my-heading').click(function() {
+        $(this).css('background-color', '#355E3B');
     });
-    $(document).ready(function () {
-        // select the element with the id "my-heading" and alert its contents
-        let headingContent = $("#my-heading").text();
-        alert(headingContent);
-
-        // select a different element with the id "my-paragraph" and alert its contents
-        let paragraphContent = $("#my-paragraph").text();
-        alert(paragraphContent);
+// change font size on paragraphs
+    $('#my-paragraph').click(function() {
+        $(this).css('font-size', '18px');
     });
-
-    $(document).ready(function() {
-        // add a red 1-pixel border to all elements with the class "codeup"
-        $(".codeup").css("border", "1px solid red");
-
-        // remove the "codeup" class from one of the elements
-        $("#remove-codeup").removeClass("codeup");
-    });
-
-    $(document).ready(function() {
-        // set the font-size of all li elements to 20px
-        $("li").css("font-size", "20px");
-
-        // highlight all h1, p, and li elements
-        $("h1, p, li").css("background-color", "yellow");
-
-        // alert the contents of all h1 elements
-        $("h1").each(function() {
-            alert($(this).text());
-        });
-    });
-
-    $(document).ready(function() {
-        // set the font-size of all li elements to 20px
-        $("li").css("font-size", "20px");
-
-        // highlight all h1, p, and li elements with a yellow background
-        $("h1, p, li").css("background-color", "yellow");
-
-        // alert the contents of all h1 elements
-        $("h1").each(function() {
-            alert($(this).text());
-        });
-    });
+// change li color to red
+    $('#my-list').hover(
+        function() {
+            $(this).css('color', 'red');
+        },
+        function() {
+            $(this).css('color', 'black');
+        }
+    );
 </script>
 </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Mapbox Map</title>
+    <!-- Mapbox JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+    <!-- Mapbox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet'/>
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>My First Mapbox Map!</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder.js"></script>
+
+<!-- Custom JS -->
+<script>
+
+    // mapbox gl map
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        zoom: 10, // starting zoom
+        center: [-96.7970, 32.7767] // [lng, lat]
+    });
+
+
+    // mapbox gl marker
+    let marker = new mapboxgl.Marker()
+        .setLngLat([-96.80331286953735, 32.77797968702678])
+        .addTo(map);
+
+    // mapbox gl popup
+    let popup = new mapboxgl.Popup()
+        .setLngLat([-96.80331286953735, 32.77797968702678])
+        .setHTML("<p>Codeup</p>")
+    marker.setPopup(popup)
+
+    //mapbox gl geocoder
+    let currentLocation = geocode("Orlando", MAPBOX_TOKEN);
+
+    currentLocation.then(function (results){
+        console.log(results)
+    })
+</script>
+</body>
+</html>

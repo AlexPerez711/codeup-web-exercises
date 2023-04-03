@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MapBox Maps API Exercise</title>
+</head>
+<body>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet'/>
+<style>
+    #map {
+        width: 100%;
+        height: 700px;
+    }
+</style>
+
+<div id='map'></div>
+
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder.js"></script>
+<script>
+
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    let map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        zoom: 18, // starting zoom
+        center: [129.72350698627986, 33.16732853202102] // [lng, lat]
+    });
+
+    let restaurants = [
+        {
+            name: "RaRaRa-Ramen Sasebo",
+            address: "〒857-0875 長崎県佐世保市下京町１−6",
+            coordinates: [129.72350698627986, 33.16732853202102],
+            description: "The best Ramen spot in Sasebo, Japan a meal here is about $10.",
+            image: "images/RaRa-Ramen.jpeg"
+        },
+        {
+            name: "Havana Grill",
+            address: "5450 Clairemont Mesa Blvd Suite G, San Diego, CA 92117",
+            coordinates: [-117.1735882313614, 32.83477737657745],
+            description: "Best Cuban food in San Diego, Ca. Owner is Cuban and uses authentic Cuban recipes.",
+            image: "images/havanagrill.png"
+        },
+        {
+            name: "Olivia's Prime Steakhouse",
+            address: "Indochina Mall, 74 Bach Dang, Lot G1-G4, The Ground Floor, Hải Châu, Đà Nẵng 550000, Vietnam",
+            coordinates: [108.2242232, 16.071177637213957],
+            description: "This Vietnamese steak house has the best view of the famous Dragon Bridge",
+            image: "images/oliviasteakhouse.jpeg"
+        }
+    ];
+
+    restaurants.forEach(function (restaurant) {
+        let marker = new mapboxgl.Marker()
+            .setLngLat(restaurant.coordinates)
+            .addTo(map);
+
+        let popup = new mapboxgl.Popup()
+            .setHTML("<h3>" + restaurant.name + "</h3>" +
+                "<p>" + restaurant.address + "</p>" +
+                "<p>" + restaurant.description + "</p>" +
+                "<img src='" + restaurant.image + "' alt='" + restaurant.name + "' width='200' height='150'>");
+        marker.setPopup(popup)
+    });
+
+    let nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, 'top-right');
+
+
+</script>
+</body>
+</html>

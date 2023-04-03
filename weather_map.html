@@ -16,34 +16,57 @@
 </style>
 </head>
 <body>
+<div id="cards" class="d-flex"></div>
 <div id='map'></div>
 
 <script src="js/keys.js"></script>
 <script src="js/mapbox-geocoder.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script>
 
     mapboxgl.accessToken = MAPBOX_TOKEN;
     let map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        style: 'mapbox://styles/mapbox/outdoors-v12', // style URL
         zoom: 10, // starting zoom
         center: [-96.80294985008125, 32.777609251915024] // [lng, lat]
     });
+let html=""
+    $.get("http://api.openweathermap.org/data/2.5/forecast", {
+        APPID: OPEN_WEATHER_APPID,
+        q:     "Dallas, US",
+        units: "imperial"
+    }).done(function(data) {
+        for (let i = 0; i <= 39; i += 8) {
+        // html += ""
+        console.log(data.list[i])
+        //<------Below is the descritption------>
+        data.list[i].weather[0].description
+        //<-------Below is the humidity--------->
+        data.list[i].main.humidity
+        //<--------Below is the wind------------->
+        data.list[i].wind.speed
+        //<--------Below is the preesure---------->
+        data.list[i].main.pressure
 
-    // $.get("http://api.openweathermap.org/data/2.5/forecast", {
-    //     APPID: OPEN_WEATHER_APPID,
-    //     q:     "Dallas, US",
-    //     units: "imperial"
-    // }).done(function(data) {
-    //     console.log(data);
-    //     console.log(data.list);
-    //     for(let i = 0; i <= 39; i += 8){
-    //         console.log(data.list[i]);
-    //     }
-    // });
+        data.list[i].dt_txt
+
+
+        html += "<div className = 'card text-white bg-warning mb-3' style = 'max-width: 18rem;' >"
+        html += "<div className = 'card-header'>" + "Date: " + data.list[i].dt_txt + "</div>"
+        html += "<div className='card-body'>"
+        html += "<h5 className='card-title'>" + "Weather Forecast" + "</h5>"
+        html += "<p className='card-text'>" + "Description:  " + data.list[i].weather[0].description + "</p>"
+        html += "<p className='card-text'>" + "Humidity:  " + data.list[i].main.humidity + "</p>"
+        html += "<p className='card-text'>" + "Wind:  " + data.list[i].wind.speed + "</p>"
+        html += "<p className='card-text'>" + "Pressure:  " + data.list[i].main.pressure + "</p>"
+        html += "</div>"
+        html += "</div>"
+
+    }
+    $('#cards').html(html)
+    });
 
 </script>
-
 </body>
 </html>

@@ -109,7 +109,7 @@
                 const date = new Date(weatherData.list[i].dt_txt).toDateString();
                 // console.log(date);
                 html += "<div class='col'>"
-                html += "<div class='card mb-3' style='height: 100%; width: 250px'>"
+                html += "<div class='card border-primary' style='height: 100%; width: 250px'>"
                 html += "<div class='card-header text-center'>" + date + "</div>";
                 html += "<div class='card-body'>"
                 html += "<h5 class='card-title text-center'>" + weatherData.list[i].main.temp_max + "°F / " + weatherData.list[i].main.temp_min + "°F" + "</h5>";

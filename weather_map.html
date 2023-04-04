@@ -6,22 +6,43 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet'/>
-<style>
-    #map {
-        width: 100%;
-        height: 700px;
-    }
-</style>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet'/>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'/>
+    <style>
+        #map {
+            width: 100%;
+            height: 700px;
+        }
+
+        .card {
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-<div id="cards" class="d-flex"></div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Weather App</a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Current City: <span id="current-city"></span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="cards" class="d-flex flex-row justify-content-between"></div>
+
 <div id='map'></div>
 
 <script src="js/keys.js"></script>
 <script src="js/mapbox-geocoder.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <script>
 
     mapboxgl.accessToken = MAPBOX_TOKEN;
@@ -31,42 +52,48 @@
         zoom: 10, // starting zoom
         center: [-96.80294985008125, 32.777609251915024] // [lng, lat]
     });
-let html=""
+    let html = ""
     $.get("http://api.openweathermap.org/data/2.5/forecast", {
         APPID: OPEN_WEATHER_APPID,
-        q:     "Dallas, US",
+        q: "Dallas, US",
         units: "imperial"
-    }).done(function(data) {
+    }).done(function (data) {
         for (let i = 0; i <= 39; i += 8) {
-        // html += ""
-        console.log(data.list[i])
-        //<------Below is the descritption------>
-        data.list[i].weather[0].description
-        //<-------Below is the humidity--------->
-        data.list[i].main.humidity
-        //<--------Below is the wind------------->
-        data.list[i].wind.speed
-        //<--------Below is the preesure---------->
-        data.list[i].main.pressure
+            // html += ""
+            console.log(data.list[i])
+            //<------Below is the descritption------>
+            data.list[i].weather[0].description
+            //<-------Below is the humidity--------->
+            data.list[i].main.humidity
+            //<--------Below is the wind------------->
+            data.list[i].wind.speed
+            //<--------Below is the preesure---------->
+            data.list[i].main.pressure
 
-        data.list[i].dt_txt
+            data.list[i].dt_txt
 
+// Split the date and time
+            let dateTime = data.list[i].dt_txt.split(' ');
 
-        html += "<div className = 'card text-white bg-warning mb-3' style = 'max-width: 18rem;' >"
-        html += "<div className = 'card-header'>" + "Date: " + data.list[i].dt_txt + "</div>"
-        html += "<div className='card-body'>"
-        html += "<h5 className='card-title'>" + "Weather Forecast" + "</h5>"
-        html += "<p className='card-text'>" + "Description:  " + data.list[i].weather[0].description + "</p>"
-        html += "<p className='card-text'>" + "Humidity:  " + data.list[i].main.humidity + "</p>"
-        html += "<p className='card-text'>" + "Wind:  " + data.list[i].wind.speed + "</p>"
-        html += "<p className='card-text'>" + "Pressure:  " + data.list[i].main.pressure + "</p>"
-        html += "</div>"
-        html += "</div>"
+// Use only the date portion
+            let date = dateTime[0];
+            html += "<div class='col-md-2'>"
+            html += "<div class='card mb-3' style='height: 100%; width: 225px'>"
+            html += "<div class='card-header text-center'>" + date + "</div>";
+            html += "<div class='card-body'>"
+            html += "<h5 class='card-title text-center'>" + data.list[i].main.temp_max + "°F / " + data.list[i].main.temp_min + "°F" + "</h5>";
+            html += "<p class='card-text'>" + "Description: " + data.list[i].weather[0].description + "</p>";
+            html += "<p class='card-text'>" + "Humidity: " + data.list[i].main.humidity + "</p>";
+            html += "<p class='card-text'>" + "Wind: " + data.list[i].wind.speed + "</p>";
+            html += "<p class='card-text'>" + "Pressure: " + data.list[i].main.pressure + "</p>";
+            html += "</div>";
+            html += "</div>";
+            html += "</div>";
 
-    }
-    $('#cards').html(html)
+        }
+        $('#cards').html(html);
     });
-
 </script>
 </body>
 </html>
+
